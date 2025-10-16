@@ -5,7 +5,6 @@ export default function Body() {
         'Khóa học TOEIC',
         'Khóa học Ngữ pháp',
         'Khóa học Từ vựng',
-        'Khóa học Luyện nghe',
     ];
     return (
         <div>

@@ -1,12 +1,13 @@
 export default function Body() {
     const courses = [
-        'Khóa học Speaking and Writing',
-        'Khóa học IELTS',
-        'Khóa học TOEIC',
-        'Khóa học Ngữ pháp',
-        'Khóa học Từ vựng',
-        'Khóa học Luyện nghe',
+        'Speaking and Writing',
+        'IELTS',
+        'TOEIC',
+        'Ngữ pháp',
+        'Từ vựng',
+        'Luyện nghe'
     ];
+
     return (
         <div>
             <section className="bg-blue-100 text-center py-10 px-4">

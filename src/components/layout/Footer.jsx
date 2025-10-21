@@ -8,8 +8,8 @@ export default function Footer() {
                 </a>
             </p>
             <p class="text-sm text-gray-600">
-                <a href="Giới thiệu" class="text-blue-500 hover:underline">Giới thiệu</a> -{" "}
-                <a href="Liên hệ" class="text-blue-500 hover:underline">Liên hệ</a>
+                <a href="Gioithieu" class="text-blue-500 hover:underline">Giới thiệu</a> -{" "}
+                <a href="lienhe" class="text-blue-500 hover:underline">Liên hệ</a>
             </p>
         </footer>
     )

@@ -3,11 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
-import Flashcard from "./Flashcard";
+import Flashcard from "./components/study/Flashcard";
 import Profile from "./components/auth/Profile";
 import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 import Lienhe from "./Lienhe";
 import Gioithieu from "./Gioithieu";
+import Chonthe from "./components/study/Chonthe";
 
 
 
@@ -26,8 +28,10 @@ export default function App() {
                     <Route path="/flashcard" element={<Flashcard />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+                    <Route path="/Register" element={<Register />} />
                     <Route path="/Lienhe" element={<Lienhe />} />
                     <Route path="/Gioithieu" element={<Gioithieu />} />
+                    <Route path="/Chonthe" element={<Chonthe />} />
 
                 </Routes>
 

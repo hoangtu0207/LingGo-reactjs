@@ -5,7 +5,9 @@ export default function Header({ isLogin, setIsLogin }) {
         <header className="flex items-center justify-between px-6 py-2  bg-white border-b">
             <div className="flex items-center space-x-2">
                 <div className="flex items-center justify-center bg-white">
-                    <img src="../public/logoLingGo.png" alt="LingGo Logo" className="w-14 h-14 object-contain" />
+                    <a href="/">
+                        <img src="../public/logoLingGo.png" alt="LingGo Logo" className="w-14 h-14 object-contain" />
+                    </a>
                 </div>
             </div>
 

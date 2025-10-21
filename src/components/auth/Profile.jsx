@@ -1,3 +1,5 @@
+import Header from "../layout/Header";
+
 export default function Profile() {
     return (
         <div className="flex flex-col min-h-screen">
@@ -11,11 +13,15 @@ export default function Profile() {
                             className="w-20 h-20 rounded-full border"
                         />
                     </div>
-                    <h2 className="text-lg font-medium mb-4">Nguyễn Văn A</h2>
+                    <h2 className="text-lg font-medium mb-4">
+                        Nguyễn Văn A
+                    </h2>
 
                     <form className="space-y-3 text-left">
                         <div>
-                            <label className="block text-gray-700 text-sm mb-1">Tài khoản</label>
+                            <label className="block text-gray-700 text-sm mb-1">
+                                Tài khoản
+                            </label>
                             <input
                                 type="text"
                                 className="w-full border-b border-gray-400 focus:outline-none bg-transparent"
@@ -23,7 +29,9 @@ export default function Profile() {
                         </div>
 
                         <div>
-                            <label className="block text-gray-700 text-sm mb-1">Họ và tên</label>
+                            <label className="block text-gray-700 text-sm mb-1">
+                                Họ và tên
+                            </label>
                             <input
                                 type="text"
                                 className="w-full border-b border-gray-400 focus:outline-none bg-transparent"
@@ -31,7 +39,9 @@ export default function Profile() {
                         </div>
 
                         <div>
-                            <label className="block text-gray-700 text-sm mb-1">Email</label>
+                            <label className="block text-gray-700 text-sm mb-1">
+                                Email
+                            </label>
                             <input
                                 type="email"
                                 className="w-full border-b border-gray-400 focus:outline-none bg-transparent"
@@ -39,7 +49,9 @@ export default function Profile() {
                         </div>
 
                         <div>
-                            <label className="block text-gray-700 text-sm mb-1">Số điện thoại</label>
+                            <label className="block text-gray-700 text-sm mb-1">
+                                Số điện thoại
+                            </label>
                             <input
                                 type="text"
                                 className="w-full border-b border-gray-400 focus:outline-none bg-transparent"

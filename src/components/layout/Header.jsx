@@ -5,15 +5,15 @@ export default function Header({ isLogin, setIsLogin }) {
         <header className="flex items-center justify-between px-6 py-2  bg-white border-b">
             <div className="flex items-center space-x-2">
                 <div className="flex items-center justify-center bg-white">
-                    <a href="/">
+                    <a href="/home">
                         <img src="../public/logoLingGo.png" alt="LingGo Logo" className="w-14 h-14 object-contain" />
                     </a>
                 </div>
             </div>
 
             <nav className="flex items-center space-x-6">
-                <Link to="/" className="hover:text-blue-600">Đề thi online</Link>
-                <Link to="/flashcard" className="hover:text-blue-600">Flashcards</Link>
+                <Link to="/Chondethi" className="hover:text-blue-600">Đề thi online</Link>
+                <Link to="/Chonthe" className="hover:text-blue-600">Flashcards</Link>
                 {isLogin ? (
                     <>
                         <Link to="/profile" className="hover:text-blue-600">Trang cá nhân</Link>

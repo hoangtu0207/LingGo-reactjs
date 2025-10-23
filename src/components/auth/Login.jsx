@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react"
 
 const Login = ({ setIsLogin }) => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex items-start justify-center pt-20 bg-gradient-to-r from-blue-100 to-white">
+        <div className="min-h-screen flex items-start justify-center pt-15 bg-gradient-to-r from-blue-100 to-white">
             <div className="bg-white rounded-2xl shadow-md p-8 flex gap-12 w-[800px] border border-gray-200">
                 <div className="flex-1 flex items-center justify-center">
                     <img src="/logoLingGo.png" alt="logo" className="w-40 h-40 object-contain" />
@@ -35,7 +34,8 @@ const Login = ({ setIsLogin }) => {
                                 type="button"
                                 onClick={() => setShowPassword(v => !v)} className="absolute right-3 top-8 text-gray-500 hover:text-gray-700"
                             >
-                                {showPassword ? <Eye /> : <EyeOff />}
+                                {/* {showPassword ? <Eye /> : <EyeOff />} */}
+                                {showPassword}
                             </button>
                         </div>
 
@@ -43,7 +43,7 @@ const Login = ({ setIsLogin }) => {
                             type="button"
                             onClick={() => {
                                 setIsLogin(true);
-                                navigate("/");
+                                navigate("/Home");
                             }}
                             className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors mx-auto block"
                         >
@@ -52,8 +52,8 @@ const Login = ({ setIsLogin }) => {
                     </div>
 
                     <div className="mt-6 flex items-center justify-between text-sm text-gray-600">
-                        <a href="#" className="hover:text-blue-600 hover:underline">Đăng ký tài khoản</a>
-                        <a href="#" className="hover:text-blue-600 hover:underline">Quên mật khẩu?</a>
+                        <a href="Register" className="hover:text-blue-600 hover:underline">Đăng ký tài khoản</a>
+                        <a href="Forgotpassword" className="hover:text-blue-600 hover:underline">Quên mật khẩu?</a>
                     </div>
                 </div>
             </div>

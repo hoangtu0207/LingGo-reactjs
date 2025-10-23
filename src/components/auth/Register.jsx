@@ -8,7 +8,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex items-start justify-center pt-20 bg-gradient-to-r from-blue-100 to-white">
+        <div className="min-h-screen flex items-start justify-center pt-12 bg-gradient-to-r from-blue-100 to-white">
             <div className="bg-white rounded-2xl shadow-md p-8 flex gap-12 w-[800px] border border-gray-200">
 
                 <div className="flex-1 flex items-center justify-center">

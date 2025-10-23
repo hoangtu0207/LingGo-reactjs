@@ -1,10 +1,11 @@
-export default function Body() {
+export default function Home() {
     const courses = [
         'Khóa học Speaking and Writing',
         'Khóa học IELTS',
         'Khóa học TOEIC',
         'Khóa học Ngữ pháp',
         'Khóa học Từ vựng',
+        'Khóa học Writing',
     ];
     return (
         <div>

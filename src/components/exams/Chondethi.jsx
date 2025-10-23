@@ -2,19 +2,19 @@ import React from "react";
 
 export default function ChonThe() {
     const topics = [
-        { title: "Từ vựng về văn phòng" },
-        { title: "Từ vựng về đồ vật" },
-        { title: "Từ vựng về con vật" },
+        { title: "Test1" },
+        { title: "Test2" },
+        { title: "Test3" },
     ];
 
     return (
         <div className="flex flex-col min-h-screen">
             <section className="bg-gray-100 text-center py-6 border-b">
                 <h2 className="text-2xl font-semibold flex items-center justify-center gap-2">
-                    <span className="material-icons text-gray-700">Flashcards</span>
+                    <span className="material-icons text-gray-700">Thư viện đề thi</span>
                 </h2>
                 <p className="text-gray-600">
-                    Lựa chọn lĩnh vực từ vựng mà bạn cần
+                    Lựa chọn đề thi để luyện tập
                 </p>
             </section>
 

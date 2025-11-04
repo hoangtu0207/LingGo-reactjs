@@ -10,6 +10,7 @@ export default function AdminLayout({ children }) {
         { path: "/admin/dashboard", label: "Dashboard", icon: "📊" },
         { path: "/admin/exams", label: "Quản lý Đề thi", icon: "📝" },
         { path: "/admin/questions", label: "Quản lý Câu hỏi", icon: "❓" },
+        { path: "/admin/flashcards", label: "Quản lý Flashcards", icon: "🎴" },
         { path: "/admin/users", label: "Quản lý Người dùng", icon: "👥" },
         { path: "/admin/results", label: "Quản lý Bài làm", icon: "📈" },
         { path: "/admin/settings", label: "Cài đặt", icon: "⚙️" },

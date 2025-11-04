@@ -18,6 +18,7 @@ import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminExams from "./components/admin/AdminExams";
 import AdminQuestions from "./components/admin/AdminQuestions";
+import AdminFlashcards from "./components/admin/AdminFlashcards";
 import AdminUsers from "./components/admin/AdminUsers";
 import AdminResults from "./components/admin/AdminResults";
 import AdminSettings from "./components/admin/AdminSettings";
@@ -54,6 +55,7 @@ export default function App() {
                         <Route path="/admin/dashboard" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
                         <Route path="/admin/exams" element={<AdminLayout><AdminExams /></AdminLayout>} />
                         <Route path="/admin/questions" element={<AdminLayout><AdminQuestions /></AdminLayout>} />
+                        <Route path="/admin/flashcards" element={<AdminLayout><AdminFlashcards /></AdminLayout>} />
                         <Route path="/admin/users" element={<AdminLayout><AdminUsers /></AdminLayout>} />
                         <Route path="/admin/results" element={<AdminLayout><AdminResults /></AdminLayout>} />
                         <Route path="/admin/settings" element={<AdminLayout><AdminSettings /></AdminLayout>} />

@@ -1,11 +1,17 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getFlashcardTopicById } from "../../data";
+import { flashcardData } from "../../data";
+import { getFlashcardTopicById } from "../../utils/flashcardStorage";
 
 export default function Flashcard() {
     const { topicId } = useParams();
     const navigate = useNavigate();
-    const topic = getFlashcardTopicById(parseInt(topicId));
+    const [topic, setTopic] = useState(null);
+
+    useEffect(() => {
+        const loadedTopic = getFlashcardTopicById(parseInt(topicId), flashcardData);
+        setTopic(loadedTopic);
+    }, [topicId]);
 
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);

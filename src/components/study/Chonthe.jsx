@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllFlashcardTopics } from "../../data";
+import { flashcardData } from "../../data";
+import { getAllFlashcardTopics } from "../../utils/flashcardStorage";
 
 export default function Chonthe() {
     const navigate = useNavigate();
-    const topics = getAllFlashcardTopics();
+    const [topics, setTopics] = useState([]);
+
+    useEffect(() => {
+        const loadedTopics = getAllFlashcardTopics(flashcardData);
+        setTopics(loadedTopics);
+    }, []);
 
     const handleStartFlashcard = (topicId) => {
         navigate(`/flashcard/${topicId}`);

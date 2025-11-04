@@ -1,11 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { getAllFlashcardTopics } from "../../data";
 
-export default function ChonThe() {
-    const topics = [
-        { title: "Từ vựng về văn phòng" },
-        { title: "Từ vựng về đồ vật" },
-        { title: "Từ vựng về con vật" },
-    ];
+export default function Chonthe() {
+    const navigate = useNavigate();
+    const topics = getAllFlashcardTopics();
+
+    const handleStartFlashcard = (topicId) => {
+        navigate(`/flashcard/${topicId}`);
+    };
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -20,16 +23,27 @@ export default function ChonThe() {
 
             <main className="flex-1 flex justify-center items-start mt-10">
                 <div className="flex flex-wrap justify-center gap-10">
-                    {topics.map((topic, index) => (
+                    {topics.map((topic) => (
                         <div
-                            key={index}
+                            key={topic.id}
                             className="w-64 h-64 bg-gray-100 rounded-2xl flex flex-col justify-between items-center p-6 shadow-sm hover:shadow-lg hover:bg-blue-100 hover:text-white transition transform hover:-translate-y-1"
                         >
-                            <h3 className="text-center font-semibold text-lg">
-                                {topic.title}
-                            </h3>
-                            <button className="border rounded-full px-4 text-lg hover:bg-blue-400">
-                                Bắt đầu thi
+                            <div className="text-center">
+                                <h3 className="font-semibold text-lg mb-2">
+                                    {topic.title}
+                                </h3>
+                                <p className="text-sm text-gray-600 mb-2">
+                                    {topic.description}
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                    {topic.cards.length} từ vựng
+                                </p>
+                            </div>
+                            <button 
+                                onClick={() => handleStartFlashcard(topic.id)}
+                                className="border rounded-full px-4 text-lg hover:bg-blue-400"
+                            >
+                                Bắt đầu học
                             </button>
                         </div>
                     ))}

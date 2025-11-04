@@ -32,7 +32,7 @@ export default function App() {
                         <Route path="/" element={<Indexlogin />} />
                         <Route path="/Home" element={<Home />} />
                         <Route path="/Indexlogin" element={<Indexlogin />} />
-                        <Route path="/flashcard" element={<Flashcard />} />
+                        <Route path="/flashcard/:topicId" element={<Flashcard />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
                         <Route path="/Register" element={<Register />} />

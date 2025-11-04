@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllExams } from "../../data";
+import { examData } from "../../data";
+import { getAllExams } from "../../utils/examStorage";
 
 export default function Chondethi() {
     const navigate = useNavigate();
-    const exams = getAllExams();
+    const [exams, setExams] = useState([]);
+
+    useEffect(() => {
+        const loadedExams = getAllExams(examData);
+        setExams(loadedExams);
+    }, []);
 
     const handleStartExam = (examId) => {
         navigate(`/Lamde/${examId}`);

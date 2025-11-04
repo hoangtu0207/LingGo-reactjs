@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { getAllExams, getAllUsers, getAllExamResults } from "../../data";
+import { examData, adminUsers, adminExamResults } from "../../data";
+import { getAllExams } from "../../utils/examStorage";
+import { getAllUsers } from "../../utils/userStorage";
+import { getAllExamResults } from "../../utils/resultStorage";
 
 export default function AdminDashboard() {
     const [stats, setStats] = useState({
@@ -8,11 +11,12 @@ export default function AdminDashboard() {
         totalResults: 0,
         averageScore: 0,
     });
+    const [recentResults, setRecentResults] = useState([]);
 
     useEffect(() => {
-        const exams = getAllExams();
-        const users = getAllUsers();
-        const results = getAllExamResults();
+        const exams = getAllExams(examData);
+        const users = getAllUsers(adminUsers);
+        const results = getAllExamResults(adminExamResults);
 
         const totalScore = results.reduce((sum, result) => sum + result.score, 0);
         const avgScore = results.length > 0 ? totalScore / results.length : 0;
@@ -23,9 +27,9 @@ export default function AdminDashboard() {
             totalResults: results.length,
             averageScore: avgScore.toFixed(1),
         });
-    }, []);
 
-    const recentResults = getAllExamResults().slice(0, 5);
+        setRecentResults(results.slice(0, 5));
+    }, []);
 
     return (
         <div className="space-y-6">

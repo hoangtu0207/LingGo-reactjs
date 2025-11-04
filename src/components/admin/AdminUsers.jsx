@@ -1,8 +1,18 @@
-import { useState } from "react";
-import { getAllUsers } from "../../data";
+import { useState, useEffect } from "react";
+import { adminUsers } from "../../data";
+import { getAllUsers, addUser, updateUser, deleteUser } from "../../utils/userStorage";
 
 export default function AdminUsers() {
-    const [users, setUsers] = useState(getAllUsers());
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const loadedUsers = getAllUsers(adminUsers);
+        setUsers(loadedUsers);
+        // Initialize localStorage với data mặc định nếu chưa có
+        if (!localStorage.getItem('linggo_users')) {
+            localStorage.setItem('linggo_users', JSON.stringify(adminUsers));
+        }
+    }, []);
     const [showModal, setShowModal] = useState(false);
     const [editingUser, setEditingUser] = useState(null);
     const [formData, setFormData] = useState({
@@ -43,19 +53,12 @@ export default function AdminUsers() {
     const handleSave = () => {
         if (editingUser) {
             // Update user
-            setUsers(users.map(user =>
-                user.id === editingUser.id
-                    ? { ...user, ...formData }
-                    : user
-            ));
+            const updatedUsers = updateUser(editingUser.id, formData, adminUsers);
+            setUsers(updatedUsers);
         } else {
             // Add new user
-            const newUser = {
-                id: users.length + 1,
-                ...formData,
-                createdAt: new Date().toISOString().split("T")[0],
-            };
-            setUsers([...users, newUser]);
+            const updatedUsers = addUser(formData, adminUsers);
+            setUsers(updatedUsers);
         }
         setShowModal(false);
         setEditingUser(null);
@@ -63,16 +66,18 @@ export default function AdminUsers() {
 
     const handleDelete = (userId) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
-            setUsers(users.filter(user => user.id !== userId));
+            const updatedUsers = deleteUser(userId, adminUsers);
+            setUsers(updatedUsers);
         }
     };
 
     const toggleStatus = (userId) => {
-        setUsers(users.map(user =>
-            user.id === userId
-                ? { ...user, status: user.status === "active" ? "inactive" : "active" }
-                : user
-        ));
+        const user = users.find(u => u.id === userId);
+        if (user) {
+            const updatedStatus = user.status === "active" ? "inactive" : "active";
+            const updatedUsers = updateUser(userId, { ...user, status: updatedStatus }, adminUsers);
+            setUsers(updatedUsers);
+        }
     };
 
     return (

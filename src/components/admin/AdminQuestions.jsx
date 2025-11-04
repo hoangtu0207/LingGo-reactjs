@@ -1,9 +1,27 @@
-import { useState } from "react";
-import { getAllExams } from "../../data";
+import { useState, useEffect } from "react";
+import { examData } from "../../data";
+import { getAllExams } from "../../utils/examStorage";
+import { addQuestionToExam, updateQuestionInExam, deleteQuestionFromExam } from "../../utils/questionStorage";
 
 export default function AdminQuestions() {
-    const [exams] = useState(getAllExams());
-    const [selectedExamId, setSelectedExamId] = useState(exams[0]?.id || null);
+    const [exams, setExams] = useState([]);
+    const [selectedExamId, setSelectedExamId] = useState(null);
+
+    useEffect(() => {
+        const loadedExams = getAllExams(examData);
+        setExams(loadedExams);
+        if (loadedExams.length > 0 && !selectedExamId) {
+            setSelectedExamId(loadedExams[0].id);
+        }
+    }, []);
+
+    // Reload exams khi selectedExamId thay đổi để có data mới nhất
+    useEffect(() => {
+        if (selectedExamId) {
+            const loadedExams = getAllExams(examData);
+            setExams(loadedExams);
+        }
+    }, [selectedExamId]);
     const [showModal, setShowModal] = useState(false);
     const [editingQuestion, setEditingQuestion] = useState(null);
     const [formData, setFormData] = useState({
@@ -49,17 +67,44 @@ export default function AdminQuestions() {
     };
 
     const handleSave = () => {
-        // Note: In a real app, this would update the data source
-        // For now, we'll just show an alert
-        alert(editingQuestion ? "Câu hỏi đã được cập nhật!" : "Câu hỏi mới đã được thêm!");
+        if (!selectedExamId) return;
+
+        // Validate form
+        if (!formData.question.trim()) {
+            alert("Vui lòng nhập câu hỏi!");
+            return;
+        }
+        if (formData.options.some(opt => !opt.text.trim())) {
+            alert("Vui lòng nhập đầy đủ các lựa chọn!");
+            return;
+        }
+        if (!formData.correctAnswer) {
+            alert("Vui lòng chọn đáp án đúng!");
+            return;
+        }
+
+        if (editingQuestion) {
+            const updatedExams = updateQuestionInExam(selectedExamId, editingQuestion.id, formData, examData);
+            if (updatedExams) {
+                setExams(updatedExams);
+            }
+        } else {
+            const updatedExams = addQuestionToExam(selectedExamId, formData, examData);
+            if (updatedExams) {
+                setExams(updatedExams);
+            }
+        }
         setShowModal(false);
         setEditingQuestion(null);
     };
 
     const handleDelete = (questionId) => {
+        if (!selectedExamId) return;
         if (window.confirm("Bạn có chắc chắn muốn xóa câu hỏi này?")) {
-            // Note: In a real app, this would delete from the data source
-            alert("Câu hỏi đã được xóa!");
+            const updatedExams = deleteQuestionFromExam(selectedExamId, questionId, examData);
+            if (updatedExams) {
+                setExams(updatedExams);
+            }
         }
     };
 
@@ -119,10 +164,12 @@ export default function AdminQuestions() {
                             <tr key={question.id}>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{question.id}</td>
                                 <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
-                                    {question.question.substring(0, 100)}...
+                                    {question.question && question.question.length > 100 
+                                        ? `${question.question.substring(0, 100)}...` 
+                                        : question.question || "N/A"}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">
-                                    {question.correctAnswer}
+                                    {question.correctAnswer || "N/A"}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <button

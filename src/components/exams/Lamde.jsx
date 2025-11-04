@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getExamById } from "../../data";
+import { examData } from "../../data";
+import { getExamById } from "../../utils/examStorage";
 
 export default function Lamde() {
     const { examId } = useParams();
     const navigate = useNavigate();
-    const exam = getExamById(parseInt(examId));
+    const [exam, setExam] = useState(null);
+
+    useEffect(() => {
+        const loadedExam = getExamById(parseInt(examId), examData);
+        setExam(loadedExam);
+        if (loadedExam) {
+            setTimeRemaining(loadedExam.timeLimit * 60);
+        }
+    }, [examId]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
-    const [timeRemaining, setTimeRemaining] = useState(exam ? exam.timeLimit * 60 : 0);
+    const [timeRemaining, setTimeRemaining] = useState(0);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const [showResults, setShowResults] = useState(false);

@@ -1,10 +1,26 @@
-import { useState } from "react";
-import { getAllExamResults, getAllUsers, getAllExams } from "../../data";
+import { useState, useEffect } from "react";
+import { adminExamResults, adminUsers, examData } from "../../data";
+import { getAllExamResults, deleteExamResult } from "../../utils/resultStorage";
+import { getAllUsers } from "../../utils/userStorage";
+import { getAllExams } from "../../utils/examStorage";
 
 export default function AdminResults() {
-    const [results] = useState(getAllExamResults());
-    const [users] = useState(getAllUsers());
-    const [exams] = useState(getAllExams());
+    const [results, setResults] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [exams, setExams] = useState([]);
+
+    useEffect(() => {
+        const loadedResults = getAllExamResults(adminExamResults);
+        const loadedUsers = getAllUsers(adminUsers);
+        const loadedExams = getAllExams(examData);
+        setResults(loadedResults);
+        setUsers(loadedUsers);
+        setExams(loadedExams);
+        // Initialize localStorage với data mặc định nếu chưa có
+        if (!localStorage.getItem('linggo_exam_results')) {
+            localStorage.setItem('linggo_exam_results', JSON.stringify(adminExamResults));
+        }
+    }, []);
     const [filterUser, setFilterUser] = useState("");
     const [filterExam, setFilterExam] = useState("");
 
@@ -22,8 +38,8 @@ export default function AdminResults() {
 
     const handleDelete = (resultId) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa kết quả này?")) {
-            // Note: In a real app, this would delete from the data source
-            alert("Kết quả đã được xóa!");
+            const updatedResults = deleteExamResult(resultId, adminExamResults);
+            setResults(updatedResults);
         }
     };
 

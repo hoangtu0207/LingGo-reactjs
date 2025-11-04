@@ -1,8 +1,18 @@
-import { useState } from "react";
-import { getAllExams } from "../../data";
+import { useState, useEffect } from "react";
+import { examData } from "../../data";
+import { getAllExams, addExam, updateExam, deleteExam } from "../../utils/examStorage";
 
 export default function AdminExams() {
-    const [exams, setExams] = useState(getAllExams());
+    const [exams, setExams] = useState([]);
+
+    useEffect(() => {
+        const loadedExams = getAllExams(examData);
+        setExams(loadedExams);
+        // Initialize localStorage với data mặc định nếu chưa có
+        if (!localStorage.getItem('linggo_exams')) {
+            localStorage.setItem('linggo_exams', JSON.stringify(examData));
+        }
+    }, []);
     const [showModal, setShowModal] = useState(false);
     const [editingExam, setEditingExam] = useState(null);
     const [formData, setFormData] = useState({
@@ -30,19 +40,12 @@ export default function AdminExams() {
     const handleSave = () => {
         if (editingExam) {
             // Update exam
-            setExams(exams.map(exam =>
-                exam.id === editingExam.id
-                    ? { ...exam, ...formData }
-                    : exam
-            ));
+            const updatedExams = updateExam(editingExam.id, { ...editingExam, ...formData }, examData);
+            setExams(updatedExams);
         } else {
             // Add new exam
-            const newExam = {
-                id: exams.length + 1,
-                ...formData,
-                questions: [],
-            };
-            setExams([...exams, newExam]);
+            const updatedExams = addExam(formData, examData);
+            setExams(updatedExams);
         }
         setShowModal(false);
         setEditingExam(null);
@@ -50,7 +53,8 @@ export default function AdminExams() {
 
     const handleDelete = (examId) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa đề thi này?")) {
-            setExams(exams.filter(exam => exam.id !== examId));
+            const updatedExams = deleteExam(examId, examData);
+            setExams(updatedExams);
         }
     };
 

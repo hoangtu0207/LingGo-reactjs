@@ -13,6 +13,7 @@ import Lienhe from "./Lienhe";
 import Gioithieu from "./Gioithieu";
 import Chonthe from "./components/study/Chonthe";
 import Chondethi from "./components/exams/Chondethi";
+import Lamde from "./components/exams/Lamde";
 
 
 
@@ -40,6 +41,7 @@ export default function App() {
                         <Route path="/Gioithieu" element={<Gioithieu />} />
                         <Route path="/Chonthe" element={<Chonthe />} />
                         <Route path="/Chondethi" element={<Chondethi />} />
+                        <Route path="/Lamde/:examId" element={<Lamde />} />
                     </Routes>
                 </main>
 

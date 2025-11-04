@@ -1,13 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { getAllExams } from "../../data";
 
-// TODO : Chondethi
+export default function Chondethi() {
+    const navigate = useNavigate();
+    const exams = getAllExams();
 
-export default function ChonThe() {
-    const topics = [
-        { title: "Test1" },
-        { title: "Test2" },
-        { title: "Test3" },
-    ];
+    const handleStartExam = (examId) => {
+        navigate(`/Lamde/${examId}`);
+    };
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -22,15 +23,26 @@ export default function ChonThe() {
 
             <main className="flex-1 flex justify-center items-start mt-10">
                 <div className="flex flex-wrap justify-center gap-10">
-                    {topics.map((topic, index) => (
+                    {exams.map((exam) => (
                         <div
-                            key={index}
+                            key={exam.id}
                             className="w-64 h-64 bg-gray-100 rounded-2xl flex flex-col justify-between items-center p-6 shadow-sm hover:shadow-lg hover:bg-blue-100 hover:text-black transition transform hover:-translate-y-1"
                         >
-                            <h3 className="text-center font-semibold text-lg">
-                                {topic.title}
-                            </h3>
-                            <button className="border rounded-full px-4 text-lg hover:bg-blue-400 hover:text-black cursor-pointer">
+                            <div className="text-center">
+                                <h3 className="font-semibold text-lg mb-2">
+                                    {exam.title}
+                                </h3>
+                                <p className="text-sm text-gray-600 mb-2">
+                                    {exam.description}
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                    Thời gian: {exam.timeLimit} phút
+                                </p>
+                            </div>
+                            <button 
+                                onClick={() => handleStartExam(exam.id)}
+                                className="border rounded-full px-4 text-lg hover:bg-blue-400 hover:text-black cursor-pointer"
+                            >
                                 Bắt đầu thi
                             </button>
                         </div>

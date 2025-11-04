@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer class="bg-white text-center py-4 mt-10 border-t">
+        <footer class="bg-white text-center py-4 mt-10">
             <p class="text-sm text-gray-600 mb-2">
                 &copy; Bản quyền thuộc về{" "}
                 <a href="mailto:hoanganhtu147@gmail.com" class="text-blue-500 hover:underline">

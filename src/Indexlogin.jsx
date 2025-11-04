@@ -1,6 +1,6 @@
 export default function Indexlogin() {
     return (
-        <div className="bg-gray-100 min-h-[500px] flex flex-col items-center justify-center px-4 py-16">
+        <div className="min-h-screen flex flex-col items-center justify-center">
             <div className="text-center max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-8">LUYỆN ĐỀ THI KHÔNG GIỚI HẠN</h1>
 

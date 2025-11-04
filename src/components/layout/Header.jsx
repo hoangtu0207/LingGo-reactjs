@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header({ isLogin, setIsLogin }) {
+    const navigate = useNavigate();
     return (
-        <header className="flex items-center justify-between px-6 py-2  bg-white border-b">
+        <header className="flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
+
             <div className="flex items-center space-x-2">
                 <div className="flex items-center justify-center bg-white">
-                    <a href="/home">
+                    <Link to="/Home">
                         <img src="../public/logoLingGo.png" alt="LingGo Logo" className="w-14 h-14 object-contain" />
-                    </a>
+                    </Link>
                 </div>
             </div>
 
@@ -17,7 +19,13 @@ export default function Header({ isLogin, setIsLogin }) {
                 {isLogin ? (
                     <>
                         <Link to="/profile" className="hover:text-blue-600">Trang cá nhân</Link>
-                        <button onClick={() => setIsLogin(false)} className="hover:text-blue-600">
+                        <button
+                            onClick={() => {
+                                setIsLogin(false);
+                                navigate('/Indexlogin');
+                            }}
+                            className="hover:text-blue-600"
+                        >
                             Đăng xuất
                         </button>
                     </>

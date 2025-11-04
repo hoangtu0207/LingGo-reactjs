@@ -7,7 +7,7 @@ const Login = ({ setIsLogin }) => {
 
     return (
         <div className="min-h-screen flex items-start justify-center pt-15 bg-gradient-to-r from-blue-100 to-white">
-            <div className="bg-white rounded-2xl shadow-md p-8 flex gap-12 w-[800px] border border-gray-200">
+            <div className="bg-white rounded-2xl shadow-md p-8 flex gap-12 w-[640px] border border-gray-200">
                 <div className="flex-1 flex items-center justify-center">
                     <img src="/logoLingGo.png" alt="logo" className="w-40 h-40 object-contain" />
                 </div>

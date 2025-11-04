@@ -9,7 +9,7 @@ export default function ChonThe() {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <section className="bg-gray-100 text-center py-6 border-b">
+            <section className="bg-blue-200 text-center py-6">
                 <h2 className="text-2xl font-semibold flex items-center justify-center gap-2">
                     <span className="material-icons text-gray-700">Flashcards</span>
                 </h2>

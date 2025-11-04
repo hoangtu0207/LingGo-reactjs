@@ -9,7 +9,7 @@ export default function Home() {
     ];
     return (
         <div>
-            <section className="bg-blue-100 text-center py-10 px-4">
+            <section className="bg-blue-200 text-center py-10 px-4">
                 <h1 className="text-2xl md:text-3xl font-bold mb-2">Chào mừng bạn đến với LingGo</h1>
                 <p className="text-gray-700 max-w-2xl mx-auto">
                     Chúc bạn có trải nghiệm học tập hiệu quả với LingGo<br />

@@ -21,27 +21,27 @@ export default function App() {
 
     return (
         <Router>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-100 to-white">
                 {/* Header */}
                 <Header isLogin={isLogin} setIsLogin={setIsLogin} />
 
                 {/* Router */}
-                <Routes>
-                    <Route path="/" element={<Indexlogin />} />
-                    <Route path="/Home" element={<Home />} />
-                    <Route path="/Indexlogin" element={<Indexlogin />} />
-                    <Route path="/flashcard" element={<Flashcard />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
-                    <Route path="/Register" element={<Register />} />
-                    <Route path="/Forgotpassword" element={<Forgotpassword />} />
-                    <Route path="/Lienhe" element={<Lienhe />} />
-                    <Route path="/Gioithieu" element={<Gioithieu />} />
-                    <Route path="/Chonthe" element={<Chonthe />} />
-                    <Route path="/Chondethi" element={<Chondethi />} />
-
-
-                </Routes>
+                <main className="flex-grow">
+                    <Routes>
+                        <Route path="/" element={<Indexlogin />} />
+                        <Route path="/Home" element={<Home />} />
+                        <Route path="/Indexlogin" element={<Indexlogin />} />
+                        <Route path="/flashcard" element={<Flashcard />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+                        <Route path="/Register" element={<Register />} />
+                        <Route path="/Forgotpassword" element={<Forgotpassword />} />
+                        <Route path="/Lienhe" element={<Lienhe />} />
+                        <Route path="/Gioithieu" element={<Gioithieu />} />
+                        <Route path="/Chonthe" element={<Chonthe />} />
+                        <Route path="/Chondethi" element={<Chondethi />} />
+                    </Routes>
+                </main>
 
                 {/* Footer */}
                 <Footer />

@@ -1,5 +1,7 @@
 import { useRef } from "react";
 
+// TODO : Chondethi
+
 export default function Flashcard() {
     const cardInnerRef = useRef(null);
 

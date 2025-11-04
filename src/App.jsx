@@ -14,6 +14,13 @@ import Gioithieu from "./Gioithieu";
 import Chonthe from "./components/study/Chonthe";
 import Chondethi from "./components/exams/Chondethi";
 import Lamde from "./components/exams/Lamde";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminExams from "./components/admin/AdminExams";
+import AdminQuestions from "./components/admin/AdminQuestions";
+import AdminUsers from "./components/admin/AdminUsers";
+import AdminResults from "./components/admin/AdminResults";
+import AdminSettings from "./components/admin/AdminSettings";
 
 
 
@@ -42,6 +49,14 @@ export default function App() {
                         <Route path="/Chonthe" element={<Chonthe />} />
                         <Route path="/Chondethi" element={<Chondethi />} />
                         <Route path="/Lamde/:examId" element={<Lamde />} />
+                        
+                        {/* Admin Routes */}
+                        <Route path="/admin/dashboard" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+                        <Route path="/admin/exams" element={<AdminLayout><AdminExams /></AdminLayout>} />
+                        <Route path="/admin/questions" element={<AdminLayout><AdminQuestions /></AdminLayout>} />
+                        <Route path="/admin/users" element={<AdminLayout><AdminUsers /></AdminLayout>} />
+                        <Route path="/admin/results" element={<AdminLayout><AdminResults /></AdminLayout>} />
+                        <Route path="/admin/settings" element={<AdminLayout><AdminSettings /></AdminLayout>} />
                     </Routes>
                 </main>
 

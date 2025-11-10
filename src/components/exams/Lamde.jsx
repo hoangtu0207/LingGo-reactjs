@@ -358,4 +358,3 @@ export default function Lamde() {
         </div>
     );
 }
-

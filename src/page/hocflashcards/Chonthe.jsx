@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { flashcardData } from "../../utils/data";
+import { flashcardData } from "../../data/flashcards";
 import { getAllFlashcardTopics } from "../../utils/flashcardStorage";
 
 export default function Chonthe() {

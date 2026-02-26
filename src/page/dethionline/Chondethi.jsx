@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { examData } from "../../utils/data";
+import { examData } from "../../data/dethi";
 import { getAllExams } from "../../utils/examStorage";
 
 export default function Chondethi() {

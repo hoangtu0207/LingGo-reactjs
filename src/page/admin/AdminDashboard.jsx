@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { examData, adminUsers, adminExamResults } from "../../utils/data";
+
+import { adminUsers } from "../../data/users";
+import { adminExamResults } from "../../data/examresults";
+
 import { getAllExams } from "../../utils/examStorage";
 import { getAllUsers } from "../../utils/userStorage";
 import { getAllExamResults } from "../../utils/resultStorage";

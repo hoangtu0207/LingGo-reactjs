@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { adminUsers } from "../../utils/data";
+import { adminUsers } from "../../data/users";
 import {
 	getAllUsers,
 	addUser,

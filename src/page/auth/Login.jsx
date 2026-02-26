@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { adminUsers } from "../../utils/data";
+import { adminUsers } from "../../data/users";
 
 const Login = ({ setIsLogin, setCurrentUser }) => {
 	const [showPassword, setShowPassword] = useState(false);

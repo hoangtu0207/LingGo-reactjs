@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { examData } from "../../utils/data";
+import { examData } from "../../data/dethi";
 import {
 	getAllExams,
 	addExam,

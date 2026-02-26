@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { flashcardData } from "../../utils/data";
+import { flashcardData } from "../../data/flashcards";
 import { getFlashcardTopicById } from "../../utils/flashcardStorage";
 
 export default function Flashcard() {

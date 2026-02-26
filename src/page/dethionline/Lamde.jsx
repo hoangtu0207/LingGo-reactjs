@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { examData } from "../../utils/data";
+import { examData } from "../../data/dethi";
 import { getExamById } from "../../utils/examStorage";
 
 export default function Lamde() {

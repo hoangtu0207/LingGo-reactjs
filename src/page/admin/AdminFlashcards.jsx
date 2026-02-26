@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { flashcardData } from "../../utils/data";
+import { flashcardData } from "../../data/flashcards";
 import {
 	getAllFlashcardTopics,
 	addFlashcardTopic,

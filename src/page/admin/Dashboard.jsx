@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { adminUsers } from "../../data/users";
-import { adminExamResults } from "../../data/examresults";
-
 import { getAllExams } from "../../utils/examStorage";
 import { getAllUsers } from "../../utils/userStorage";
 import { getAllExamResults } from "../../utils/resultStorage";
@@ -17,14 +14,15 @@ export default function AdminDashboard() {
 	const [recentResults, setRecentResults] = useState([]);
 
 	useEffect(() => {
-		const exams = getAllExams(examData);
-		const users = getAllUsers(adminUsers);
-		const results = getAllExamResults(adminExamResults);
+		const exams = getAllExams();
+		const users = getAllUsers();
+		const results = getAllExamResults();
 
 		const totalScore = results.reduce(
 			(sum, result) => sum + result.score,
 			0,
 		);
+
 		const avgScore = results.length > 0 ? totalScore / results.length : 0;
 
 		setStats({
@@ -34,7 +32,12 @@ export default function AdminDashboard() {
 			averageScore: avgScore.toFixed(1),
 		});
 
-		setRecentResults(results.slice(0, 5));
+		// Lấy 5 bài mới nhất (sắp xếp theo ngày)
+		const sortedResults = [...results].sort(
+			(a, b) => new Date(b.completedAt) - new Date(a.completedAt),
+		);
+
+		setRecentResults(sortedResults.slice(0, 5));
 	}, []);
 
 	return (
@@ -42,63 +45,38 @@ export default function AdminDashboard() {
 			{/* Stats Cards */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 				<div className="bg-white rounded-lg shadow p-6">
-					<div className="flex items-center justify-between">
-						<div>
-							<p className="text-gray-600 text-sm">
-								Tổng người dùng
-							</p>
-							<p className="text-3xl font-bold text-gray-800">
-								{stats.totalUsers}
-							</p>
-						</div>
-						<div className="text-4xl">👥</div>
-					</div>
+					<p className="text-gray-600 text-sm">Tổng người dùng</p>
+					<p className="text-3xl font-bold text-gray-800">
+						{stats.totalUsers}
+					</p>
 				</div>
 
 				<div className="bg-white rounded-lg shadow p-6">
-					<div className="flex items-center justify-between">
-						<div>
-							<p className="text-gray-600 text-sm">Tổng đề thi</p>
-							<p className="text-3xl font-bold text-gray-800">
-								{stats.totalExams}
-							</p>
-						</div>
-						<div className="text-4xl">📝</div>
-					</div>
+					<p className="text-gray-600 text-sm">Tổng đề thi</p>
+					<p className="text-3xl font-bold text-gray-800">
+						{stats.totalExams}
+					</p>
 				</div>
 
 				<div className="bg-white rounded-lg shadow p-6">
-					<div className="flex items-center justify-between">
-						<div>
-							<p className="text-gray-600 text-sm">
-								Tổng bài làm
-							</p>
-							<p className="text-3xl font-bold text-gray-800">
-								{stats.totalResults}
-							</p>
-						</div>
-						<div className="text-4xl">📈</div>
-					</div>
+					<p className="text-gray-600 text-sm">Tổng bài làm</p>
+					<p className="text-3xl font-bold text-gray-800">
+						{stats.totalResults}
+					</p>
 				</div>
 
 				<div className="bg-white rounded-lg shadow p-6">
-					<div className="flex items-center justify-between">
-						<div>
-							<p className="text-gray-600 text-sm">
-								Điểm trung bình
-							</p>
-							<p className="text-3xl font-bold text-gray-800">
-								{stats.averageScore}%
-							</p>
-						</div>
-						<div className="text-4xl">⭐</div>
-					</div>
+					<p className="text-gray-600 text-sm">Điểm trung bình</p>
+					<p className="text-3xl font-bold text-gray-800">
+						{stats.averageScore}%
+					</p>
 				</div>
 			</div>
 
 			{/* Recent Results */}
 			<div className="bg-white rounded-lg shadow p-6">
 				<h2 className="text-xl font-semibold mb-4">Bài làm gần đây</h2>
+
 				<div className="overflow-x-auto">
 					<table className="min-w-full divide-y divide-gray-200">
 						<thead className="bg-gray-50">
@@ -120,16 +98,19 @@ export default function AdminDashboard() {
 								</th>
 							</tr>
 						</thead>
+
 						<tbody className="bg-white divide-y divide-gray-200">
 							{recentResults.map((result) => (
 								<tr key={result.id}>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+									<td className="px-6 py-4 text-sm">
 										{result.username}
 									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+
+									<td className="px-6 py-4 text-sm">
 										{result.examTitle}
 									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm">
+
+									<td className="px-6 py-4 text-sm">
 										<span
 											className={`font-semibold ${
 												result.score >= 80
@@ -142,10 +123,12 @@ export default function AdminDashboard() {
 											{result.score}%
 										</span>
 									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+
+									<td className="px-6 py-4 text-sm">
 										{result.timeSpent} phút
 									</td>
-									<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+
+									<td className="px-6 py-4 text-sm">
 										{new Date(
 											result.completedAt,
 										).toLocaleDateString("vi-VN")}

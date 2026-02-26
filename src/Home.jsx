@@ -1,6 +1,8 @@
-import IndexLogin from "./Home/IndexLogin";
-import IndexUnLogin from "./Home/IndexUnLogin";
+import IndexLogin from "./components/layout/IndexLogin";
+import IndexUnLogin from "./components/layout/IndexUnlogin";
 
 export default function Home() {
-	return <div>{true ? <IndexLogin /> : <IndexUnLogin />}</div>;
+	const isLogin = true;
+
+	return <div>{isLogin ? <IndexLogin /> : <IndexUnLogin />}</div>;
 }

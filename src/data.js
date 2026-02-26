@@ -443,11 +443,12 @@ export const getAllFlashcardTopics = () => {
 export const adminUsers = [
     {
         id: 1,
-        username: "hoangtu0207",
+        username: "admin",
         fullName: "Hoang Tu",
         email: "hoanganhtu147@gmail.com",
         phone: "0123456789",
-        role: "user",
+        role: "admin",
+        isAdmin: true,
         createdAt: "2024-01-15",
         status: "active"
     },
@@ -458,6 +459,7 @@ export const adminUsers = [
         email: "user123@gmail.com",
         phone: "0987654321",
         role: "user",
+        isAdmin: false,
         createdAt: "2024-02-20",
         status: "active"
     },
@@ -468,6 +470,7 @@ export const adminUsers = [
         email: "student456@gmail.com",
         phone: "0123456780",
         role: "user",
+        isAdmin: false,
         createdAt: "2024-03-10",
         status: "active"
     },
@@ -478,6 +481,7 @@ export const adminUsers = [
         email: "learner789@gmail.com",
         phone: "0987654320",
         role: "user",
+        isAdmin: false,
         createdAt: "2024-04-05",
         status: "inactive"
     }

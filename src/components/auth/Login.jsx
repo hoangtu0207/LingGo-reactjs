@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { adminUsers } from "../../data";
 
-const Login = ({ setIsLogin }) => {
+const Login = ({ setIsLogin, setCurrentUser }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     return (
@@ -21,6 +24,8 @@ const Login = ({ setIsLogin }) => {
                                 type="text"
                                 className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-100"
                                 placeholder="Nhập tài khoản"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
                         <div className="relative">
@@ -29,6 +34,8 @@ const Login = ({ setIsLogin }) => {
                                 type={showPassword ? "text" : "password"}
                                 className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-100 pr-10"
                                 placeholder="Nhập mật khẩu"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <button
                                 type="button"
@@ -42,6 +49,9 @@ const Login = ({ setIsLogin }) => {
                         <button
                             type="button"
                             onClick={() => {
+                                const user = adminUsers.find(u => u.username.toLowerCase() === username.toLowerCase());
+                                const selected = user || adminUsers.find(u => u.role === "user") || adminUsers[0];
+                                setCurrentUser(selected);
                                 setIsLogin(true);
                                 navigate("/Home");
                             }}

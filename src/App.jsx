@@ -27,12 +27,13 @@ import AdminUsers from "./components/admin/AdminUsers";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-100 to-white">
         {/* Header */}
-        <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+        <Header isLogin={isLogin} setIsLogin={setIsLogin} currentUser={currentUser} setCurrentUser={setCurrentUser} />
 
         {/* Router */}
         <main className="flex-grow">
@@ -41,7 +42,7 @@ export default function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/flashcard/:topicId" element={<Flashcard />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+            <Route path="/login" element={<Login setIsLogin={setIsLogin} setCurrentUser={setCurrentUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Forgotpassword" element={<Forgotpassword />} />
             <Route path="/Lienhe" element={<Lienhe />} />

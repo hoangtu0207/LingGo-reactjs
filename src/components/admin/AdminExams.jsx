@@ -8,7 +8,6 @@ export default function AdminExams() {
     useEffect(() => {
         const loadedExams = getAllExams(examData);
         setExams(loadedExams);
-        // Initialize localStorage với data mặc định nếu chưa có
         if (!localStorage.getItem('linggo_exams')) {
             localStorage.setItem('linggo_exams', JSON.stringify(examData));
         }

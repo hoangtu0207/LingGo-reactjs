@@ -12,7 +12,8 @@ export default function AdminDashboard() {
         averageScore: 0,
     });
     const [recentResults, setRecentResults] = useState([]);
-
+    const name = "Tu"
+    `my name is ${name}`
     useEffect(() => {
         const exams = getAllExams(examData);
         const users = getAllUsers(adminUsers);
@@ -123,4 +124,3 @@ export default function AdminDashboard() {
         </div>
     );
 }
-

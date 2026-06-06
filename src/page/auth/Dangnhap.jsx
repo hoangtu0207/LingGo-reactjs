@@ -9,7 +9,7 @@ const Login = ({ setIsLogin, setCurrentUser }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="min-h-screen flex items-start justify-center pt-15 bg-gradient-to-r from-blue-100 to-white">
+		<div className="min-h-screen flex items-start justify-center pt-15 bg-gradient-to-r from-blue-300 to-white">
 			<div className="bg-white rounded-2xl shadow-md p-8 flex gap-12 w-[640px] border border-gray-200">
 				<div className="flex-1 flex items-center justify-center">
 					<img
@@ -19,7 +19,7 @@ const Login = ({ setIsLogin, setCurrentUser }) => {
 					/>
 				</div>
 
-				<div className="flex-1 flex flex-col justify-center">
+				<div className="flex-1 flex flex-col justify-center" border-gray-200>
 					<h2 className="text-3xl font-semibold mb-8 text-gray-800 text-center">
 						Đăng nhập
 					</h2>

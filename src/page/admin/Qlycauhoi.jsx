@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { examData } from "../../data/dethi";
 import { getAllExams } from "../../utils/examStorage";
+// them sua xoa thong qua localstorage
 import {
 	addQuestionToExam,
 	updateQuestionInExam,
@@ -8,9 +9,11 @@ import {
 } from "../../utils/questionStorage";
 
 export default function AdminQuestions() {
+	// khoi tao giai tri ban dau
 	const [exams, setExams] = useState([]);
 	const [selectedExamId, setSelectedExamId] = useState(null);
 
+	// useEffect kiem soat so lan re-render cua react
 	useEffect(() => {
 		const loadedExams = getAllExams(examData);
 		setExams(loadedExams);
@@ -28,6 +31,7 @@ export default function AdminQuestions() {
 	}, [selectedExamId]);
 	const [showModal, setShowModal] = useState(false);
 	const [editingQuestion, setEditingQuestion] = useState(null);
+	// khoi tao gia tri cua form quan ly cau hoi
 	const [formData, setFormData] = useState({
 		question: "",
 		options: [
@@ -40,9 +44,11 @@ export default function AdminQuestions() {
 		explanation: "",
 	});
 
+	// find tim phan tu tra ve
 	const selectedExam = exams.find((exam) => exam.id === selectedExamId);
 	const questions = selectedExam?.questions || [];
 
+	// handle add khi click goi ham, dien data vao, mo Modal , the len
 	const handleAdd = () => {
 		setEditingQuestion(null);
 		setFormData({
@@ -56,9 +62,11 @@ export default function AdminQuestions() {
 			correctAnswer: "A",
 			explanation: "",
 		});
+		// mo the modal
 		setShowModal(true);
 	};
 
+	// edit chinh sua data theo input
 	const handleEdit = (question) => {
 		setEditingQuestion(question);
 		setFormData({
@@ -70,9 +78,11 @@ export default function AdminQuestions() {
 		setShowModal(true);
 	};
 
+	// handle luu
 	const handleSave = () => {
 		if (!selectedExamId) return;
 
+		// loc du lieu dau vao
 		// Validate form
 		if (!formData.question.trim()) {
 			alert("Vui lòng nhập câu hỏi!");
@@ -87,6 +97,7 @@ export default function AdminQuestions() {
 			return;
 		}
 
+// update
 		if (editingQuestion) {
 			const updatedExams = updateQuestionInExam(
 				selectedExamId,
@@ -111,6 +122,7 @@ export default function AdminQuestions() {
 		setEditingQuestion(null);
 	};
 
+// handle delete
 	const handleDelete = (questionId) => {
 		if (!selectedExamId) return;
 		if (window.confirm("Bạn có chắc chắn muốn xóa câu hỏi này?")) {
@@ -140,7 +152,7 @@ export default function AdminQuestions() {
 				<h2 className="text-2xl font-semibold">Quản lý Câu hỏi</h2>
 				<button
 					onClick={handleAdd}
-					className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+					className="btn btn-primary"
 					disabled={!selectedExamId}
 				>
 					+ Thêm câu hỏi

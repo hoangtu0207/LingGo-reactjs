@@ -1,6 +1,6 @@
 export default function Lienhe() {
     return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-100 to-white flex items-start justify-center pt-24">
+        <div className="min-h-screen bg-blue-200 flex items-start justify-center pt-24">
             <div className="bg-white rounded-2xl shadow-md p-10 w-full max-w-3xl mx-4">
                 <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Liên hệ</h1>
 

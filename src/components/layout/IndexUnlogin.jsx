@@ -1,6 +1,6 @@
 export default function Indexlogin() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-r from-blue-300 to-blue-100 flex flex-col items-center justify-center">
       <div className="text-center max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">LUYỆN ĐỀ THI KHÔNG GIỚI HẠN</h1>
 
@@ -12,7 +12,7 @@ export default function Indexlogin() {
 
         <a
           href="/Register"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-lg font-medium hover:bg-blue-600 transition-colors"
+          className="inline-block bg-blue-400 text-white px-4 py-2 rounded-full text-lg font-medium hover:bg-blue-600 transition-colors"
         >
           Tham gia ngay!!!
         </a>

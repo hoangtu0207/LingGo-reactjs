@@ -77,8 +77,9 @@ export default function Flashcard() {
 	};
 
 	return (
+		<div className="min-h-screen bg-gradient-to-r from-blue-200 to-blue-100 py-10 px-4">
 		<main className="flex-1 px-6 py-10 flex flex-col items-center min-h-[80vh]">
-			<h2 className="text-2xl font-semibold text-center mb-4">
+			<h2 className=" text-2xl font-semibold text-center mb-4">
 				{topic.title}
 			</h2>
 			<p className="text-gray-600 text-center mb-8">
@@ -95,7 +96,7 @@ export default function Flashcard() {
 					className="relative h-full w-full preserve-3d transition-transform duration-500"
 				>
 					{/* Mặt trước - Từ vựng */}
-					<div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-8 shadow-lg flex flex-col justify-center items-center text-center backface-hidden">
+					<div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg p-8 shadow-lg flex flex-col justify-center items-center text-center backface-hidden">
 						<div className="text-3xl font-bold mb-4 text-blue-800">
 							{currentCard.word}
 						</div>
@@ -106,13 +107,13 @@ export default function Flashcard() {
 							({currentCard.partOfSpeech})
 						</div>
 						<div className="mt-4 text-sm text-gray-500">
-							👆 Click để xem nghĩa
+							Click để xem nghĩa
 						</div>
 					</div>
 
 					{/* Mặt sau - Định nghĩa */}
 					<div
-						className="absolute inset-0 bg-gradient-to-br from-green-100 to-green-200 rounded-lg p-8 shadow-lg flex flex-col justify-center backface-hidden"
+						className="absolute inset-0 bg-gradient-to-br from-green-200 to-green-300 rounded-lg p-8 shadow-lg flex flex-col justify-center backface-hidden"
 						style={{ transform: "rotateY(180deg)" }}
 					>
 						<div className="mb-4">
@@ -132,7 +133,7 @@ export default function Flashcard() {
 							</p>
 						</div>
 						<div className="mt-4 text-sm text-gray-500">
-							👆 Click để quay lại
+							Click để quay lại
 						</div>
 					</div>
 				</div>
@@ -193,7 +194,7 @@ export default function Flashcard() {
 			{/* Back button */}
 			<button
 				onClick={() => navigate("/Chonthe")}
-				className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+				className="bg-gray-400 text-white px-6 py-2 rounded hover:bg-gray-600"
 			>
 				Quay lại danh sách chủ đề
 			</button>
@@ -214,5 +215,6 @@ export default function Flashcard() {
                 }
             `}</style>
 		</main>
+		</div>
 	);
 }

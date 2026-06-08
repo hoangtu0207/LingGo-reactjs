@@ -35,9 +35,9 @@ const Profile = () => {
     };
 
     return (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8">
-                <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Thông tin cá nhân</h1>
+        <div className="min-h-screen bg-gradient-to-r from-blue-200 to-white py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto bg-gray-200 rounded-lg shadow-md p-8">
+                <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">Thông tin cá nhân</h1>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="flex flex-col items-center space-y-4">
@@ -66,7 +66,7 @@ const Profile = () => {
                     {/* Form thông tin */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className="block border-black text-sm font-medium text-gray-700 mb-1">
                                 Tài khoản
                             </label>
                             <input

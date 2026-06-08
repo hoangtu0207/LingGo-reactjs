@@ -59,12 +59,12 @@ export default function AdminLayout({ children }) {
 					))}
 				</nav>
 
-				<div className="p-4">
+				<div className="p-4 text-center">
 					<button
 						onClick={handleLogout}
-						className="btn btn-neutral"
+						className="inline-block bg-red-400 r text-white px-4 py-2 text-lg font-medium hover:bg-red-600 transition-colors"
 					>
-						{sidebarOpen ? "Đăng xuất" : "🚪"}
+						{sidebarOpen ? "Đăng xuất" : ""}
 					</button>
 				</div>
 			</div>

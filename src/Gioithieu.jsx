@@ -1,7 +1,7 @@
 export default function Gioithieu() {
     return (
-        <div className="min-h-screen bg-blue-50 pt-10 flex items-start">
-            <div className="container mx-auto px-4 py-8 max-w-4xl bg-white rounded-xl shadow-md">
+        <div className="min-h-screen bg-blue-200 pt-10 flex items-start">
+            <div className="container bg-gray-200 mx-auto px-4 py-8 max-w-4xl bg-white rounded-xl shadow-md">
                 <h1 className="text-3xl font-bold mb-6">Về chúng tôi</h1>
 
                 <div className="space-y-6">

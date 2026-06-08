@@ -9,7 +9,7 @@ export default function Home() {
 	];
 	return (
 		<div>
-			<section className="bg-blue-200 text-center py-10 px-4">
+			<section className="bg-blue-300 text-center py-10 px-4">
 				<h1 className="text-2xl md:text-3xl font-bold mb-2">
 					Chào mừng bạn đến với LingGo
 				</h1>
@@ -30,7 +30,7 @@ export default function Home() {
 						<a
 							key={id}
 							href="#"
-							className="bg-gray-200 h-40 flex items-center justify-center rounded shadow p-4 hover:bg-blue-200 hover:text-white transition transform hover:-translate-y-1"
+							className="bg-gray-300 h-40 flex items-center justify-center rounded shadow p-4 hover:bg-blue-200 hover:text-blue-400 transition transform hover:-translate-y-1"
 						>
 							<span className="font-medium">{course}</span>
 						</a>

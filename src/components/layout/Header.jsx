@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Header({ isLogin, setIsLogin, currentUser, setCurrentUser }) {
     const navigate = useNavigate();
     return (
-        <header className="flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <header className="flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-md border-b border-gray-300 shadow-sm">
 
             <div className="flex items-center space-x-2">
                 <div className="flex items-center justify-center bg-white">

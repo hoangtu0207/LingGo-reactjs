@@ -18,13 +18,13 @@ export default function Chondethi() {
 
 	return (
 		<div className="flex flex-col min-h-screen">
-			<section className="bg-blue-200 text-center py-6">
+			<section className="bg-blue-300 text-center py-6">
 				<h2 className="text-2xl font-semibold flex items-center justify-center gap-2">
 					<span className="material-icons text-gray-700">
 						Thư viện đề thi
 					</span>
 				</h2>
-				<p className="text-gray-600">Lựa chọn đề thi để luyện tập</p>
+				<p className="text-gray-700">Lựa chọn đề thi để luyện tập</p>
 			</section>
 
 			<main className="flex-1 flex justify-center items-start mt-10">
@@ -32,16 +32,16 @@ export default function Chondethi() {
 					{exams.map((exam) => (
 						<div
 							key={exam.id}
-							className="w-64 h-64 bg-gray-100 rounded-2xl flex flex-col justify-between items-center p-6 shadow-sm hover:shadow-lg hover:bg-blue-100 hover:text-black transition transform hover:-translate-y-1"
+							className="w-64 h-64 bg-gray-300 rounded-2xl flex flex-col justify-between items-center p-6 shadow-sm hover:shadow-lg hover:bg-blue-300 hover:text-black transition transform hover:-translate-y-1"
 						>
 							<div className="text-center">
 								<h3 className="font-semibold text-lg mb-2">
 									{exam.title}
 								</h3>
-								<p className="text-sm text-gray-600 mb-2">
+								<p className="text-sm text-gray-700 mb-2">
 									{exam.description}
 								</p>
-								<p className="text-xs text-gray-500">
+								<p className="text-xs text-gray-700">
 									Thời gian: {exam.timeLimit} phút
 								</p>
 							</div>

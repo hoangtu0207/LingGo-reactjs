@@ -266,17 +266,17 @@ export default function Lamde() {
 	}
 
 	return (
-		<div className="min-h-screen py-10 px-4">
+		<div className="min-h-screen bg-gradient-to-r from-blue-300 to-blue-100 py-10 px-4">
 			<div className="max-w-4xl mx-auto">
 				{/* Header với thông tin đề thi và timer */}
-				<div className="bg-white rounded-lg shadow-md p-6 mb-6">
+				<div className="bg-gray-300 rounded-lg shadow-md p-6 mb-6">
 					<div className="flex justify-between items-center">
 						<div>
 							<h2 className="text-2xl font-bold">{exam.title}</h2>
 							<p className="text-gray-600">{exam.description}</p>
 						</div>
 						<div className="text-center">
-							<div className="text-2xl font-bold text-blue-600">
+							<div className="text-2xl font-bold text-blue-500">
 								{formatTime(timeRemaining)}
 							</div>
 							<p className="text-sm text-gray-500">
@@ -287,7 +287,7 @@ export default function Lamde() {
 				</div>
 
 				{/* Câu hỏi hiện tại */}
-				<div className="bg-white rounded-lg shadow-md p-8 mb-6">
+				<div className="bg-gray-300 rounded-lg shadow-md p-8 mb-6">
 					<div className="mb-6">
 						<div className="flex justify-between items-center mb-4">
 							<h3 className="text-xl font-semibold">
@@ -332,7 +332,7 @@ export default function Lamde() {
 				</div>
 
 				{/* Navigation buttons */}
-				<div className="bg-white rounded-lg shadow-md p-6 flex justify-between items-center">
+				<div className="bg-gray-300 rounded-lg shadow-md p-6 flex justify-between items-center">
 					<button
 						onClick={handlePrevious}
 						disabled={currentQuestionIndex === 0}

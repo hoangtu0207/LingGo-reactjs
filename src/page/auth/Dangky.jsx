@@ -8,8 +8,8 @@ const Register = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="min-h-screen flex items-start justify-center pt-12 bg-gradient-to-r from-blue-100 to-white">
-			<div className="bg-white rounded-2xl shadow-md p-8 flex gap-12 w-[640px] border border-gray-200">
+		<div className="min-h-screen flex items-start justify-center pt-12 bg-gradient-to-r from-blue-200 to-blue-100">
+			<div className="bg-gray-200 rounded-2xl shadow-md p-8 flex gap-12 w-[640px] border border-gray-300">
 				<div className="flex-1 flex items-center justify-center">
 					<img
 						src="/logoLingGo.png"
@@ -19,7 +19,7 @@ const Register = () => {
 				</div>
 
 				<div className="flex-1 flex flex-col justify-center">
-					<h2 className="text-3xl font-semibold mb-8 text-gray-800 text-center">
+					<h2 className="text-3xl font-semibold mb-8 text-gray-700 text-center">
 						Đăng ký
 					</h2>
 
@@ -31,7 +31,7 @@ const Register = () => {
 							</label>
 							<input
 								type="text"
-								className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-100"
+								className="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-300"
 								placeholder="Nhập họ và tên"
 							/>
 						</div>

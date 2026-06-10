@@ -21,6 +21,7 @@ import AdminQuestions from "./page/admin/Qlycauhoi";
 import AdminFlashcards from "./page/admin/Qlyflashcard";
 import AdminUsers from "./page/admin/Qlynguoidung";
 import Chonchude from "./page/listenandchoose/Chonchude";
+import ListenAndChoosePage from "./page/listenandchoose/ListenAndChoosePage";
 
 export default function App() {
     const [isLogin, setIsLogin] = useState(false);
@@ -28,7 +29,7 @@ export default function App() {
 
     return (
         <Router>
-            <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-100 to-white">
+            <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-50 to-white">
                 {/* Header */}
                 <Header
                     isLogin={isLogin}
@@ -88,6 +89,14 @@ export default function App() {
                         <Route
                             path="/chonchude"
                             element={<Chonchude />}
+                        />
+                        <Route
+                            path="/chondethi"
+                            element={<Chondethi />}
+                        />
+                        <Route
+                            path="/listen-and-choose/:topicId"
+                            element={<ListenAndChoosePage />}
                         />
                         <Route
                             path="/Lamde/:examId"

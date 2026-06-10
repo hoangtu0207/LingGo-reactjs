@@ -14,6 +14,7 @@ export default function Header({ isLogin, setIsLogin, currentUser, setCurrentUse
             </div>
 
             <nav className="flex items-center space-x-6">
+                <Link to="/chonchude" className="hover:text-blue-600">Listen and Choose</Link>
                 <Link to="/Chondethi" className="hover:text-blue-600">Đề thi online</Link>
                 <Link to="/Chonthe" className="hover:text-blue-600">Flashcards</Link>
                 {isLogin ? (

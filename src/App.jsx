@@ -20,126 +20,127 @@ import AdminExams from "./page/admin/Qlydethi";
 import AdminQuestions from "./page/admin/Qlycauhoi";
 import AdminFlashcards from "./page/admin/Qlyflashcard";
 import AdminUsers from "./page/admin/Qlynguoidung";
+import Chonchude from "./page/listenandchoose/Chonchude";
 
 export default function App() {
-	const [isLogin, setIsLogin] = useState(false);
-	const [currentUser, setCurrentUser] = useState(null);
+    const [isLogin, setIsLogin] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
 
-	return (
-		<Router>
-			<div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-100 to-white">
-				{/* Header */}
-				<Header
-					isLogin={isLogin}
-					setIsLogin={setIsLogin}
-					currentUser={currentUser}
-					setCurrentUser={setCurrentUser}
-				/>
+    return (
+        <Router>
+            <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-100 to-white">
+                {/* Header */}
+                <Header
+                    isLogin={isLogin}
+                    setIsLogin={setIsLogin}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                />
 
-				{/* Router */}
-				<main className="flex-grow">
-					<Routes>
-						<Route
-							path="/"
-							element={<Indexlogin />}
-						/>
-						<Route
-							path="/Home"
-							element={<Home />}
-						/>
-						<Route
-							path="/flashcard/:topicId"
-							element={<Flashcard />}
-						/>
-						<Route
-							path="/profile"
-							element={<Profile />}
-						/>
-						<Route
-							path="/login"
-							element={
-								<Login
-									setIsLogin={setIsLogin}
-									setCurrentUser={setCurrentUser}
-								/>
-							}
-						/>
-						<Route
-							path="/Register"
-							element={<Register />}
-						/>
-						<Route
-							path="/Forgotpassword"
-							element={<Forgotpassword />}
-						/>
-						<Route
-							path="/Lienhe"
-							element={<Lienhe />}
-						/>
-						<Route
-							path="/Gioithieu"
-							element={<Gioithieu />}
-						/>
-						<Route
-							path="/Chonthe"
-							element={<Chonthe />}
-						/>
-						<Route
-							path="/Chondethi"
-							element={<Chondethi />}
-						/>
-						<Route
-							path="/Lamde/:examId"
-							element={<Lamde />}
-						/>
+                {/* Router */}
+                <main className="flex-grow">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<Indexlogin />}
+                        />
+                        <Route
+                            path="/Home"
+                            element={<Home />}
+                        />
+                        <Route
+                            path="/flashcard/:topicId"
+                            element={<Flashcard />}
+                        />
+                        <Route
+                            path="/profile"
+                            element={<Profile />}
+                        />
+                        <Route
+                            path="/login"
+                            element={
+                                <Login
+                                    setIsLogin={setIsLogin}
+                                    setCurrentUser={setCurrentUser}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/Register"
+                            element={<Register />}
+                        />
+                        <Route
+                            path="/Forgotpassword"
+                            element={<Forgotpassword />}
+                        />
+                        <Route
+                            path="/Lienhe"
+                            element={<Lienhe />}
+                        />
+                        <Route
+                            path="/Gioithieu"
+                            element={<Gioithieu />}
+                        />
+                        <Route
+                            path="/Chonthe"
+                            element={<Chonthe />}
+                        />
+                        <Route
+                            path="/chonchude"
+                            element={<Chonchude />}
+                        />
+                        <Route
+                            path="/Lamde/:examId"
+                            element={<Lamde />}
+                        />
 
-						{/* Admin Routes */}
-						<Route
-							path="/admin/dashboard"
-							element={
-								<AdminLayout>
-									<AdminDashboard />
-								</AdminLayout>
-							}
-						/>
-						<Route
-							path="/admin/exams"
-							element={
-								<AdminLayout>
-									<AdminExams />
-								</AdminLayout>
-							}
-						/>
-						<Route
-							path="/admin/questions"
-							element={
-								<AdminLayout>
-									<AdminQuestions />
-								</AdminLayout>
-							}
-						/>
-						<Route
-							path="/admin/flashcards"
-							element={
-								<AdminLayout>
-									<AdminFlashcards />
-								</AdminLayout>
-							}
-						/>
-						<Route
-							path="/admin/users"
-							element={
-								<AdminLayout>
-									<AdminUsers />
-								</AdminLayout>
-							}
-						/>
-					</Routes>
-				</main>
+                        {/* Admin Routes */}
+                        <Route
+                            path="/admin/dashboard"
+                            element={
+                                <AdminLayout>
+                                    <AdminDashboard />
+                                </AdminLayout>
+                            }
+                        />
+                        <Route
+                            path="/admin/exams"
+                            element={
+                                <AdminLayout>
+                                    <AdminExams />
+                                </AdminLayout>
+                            }
+                        />
+                        <Route
+                            path="/admin/questions"
+                            element={
+                                <AdminLayout>
+                                    <AdminQuestions />
+                                </AdminLayout>
+                            }
+                        />
+                        <Route
+                            path="/admin/flashcards"
+                            element={
+                                <AdminLayout>
+                                    <AdminFlashcards />
+                                </AdminLayout>
+                            }
+                        />
+                        <Route
+                            path="/admin/users"
+                            element={
+                                <AdminLayout>
+                                    <AdminUsers />
+                                </AdminLayout>
+                            }
+                        />
+                    </Routes>
+                </main>
 
-				{/* Footer */}
-				<Footer />
-			</div>
-		</Router>
-	);
+                {/* Footer */}
+                <Footer />
+            </div>
+        </Router>
+    );
 }

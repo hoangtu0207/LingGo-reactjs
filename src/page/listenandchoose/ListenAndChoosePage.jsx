@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
-import ResultPage from "./ResultPage";
+import ResultPage from "./Ketqua";
 import { listenAndChooseQuestions, listenAndChooseTopics } from "../../data/listenandchoose";
 
 export default function ListenAndChoosePage() {
@@ -53,6 +53,22 @@ export default function ListenAndChoosePage() {
         }
     };
 
+    const handlePreviousQuestion = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+            setSelectedAnswer(null);
+            setIsAnswered(false);
+            setIsCorrect(false);
+        }
+    };
+
+    const handleGoToQuestion = (index) => {
+        setCurrentQuestionIndex(index);
+        setSelectedAnswer(null);
+        setIsAnswered(false);
+        setIsCorrect(false);
+    };
+
     if (!topic || questions.length === 0) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-white">
@@ -82,45 +98,74 @@ export default function ListenAndChoosePage() {
     }
 
     return (
-        <div className="min-h-screen bg-white py-12 px-4">
-            <div className="max-w-4xl mx-auto">
-                {/* Điểm số */}
-                {/* <div className="mb-8 flex justify-between items-center px-8 py-4 bg-gray-50 rounded-lg">
-                    <div>
-                        <p className="text-gray-600 text-sm">Điểm</p>
-                        <p className="text-2xl font-bold text-blue-600">
-                            {score}/{questions.length}
-                        </p>
-                    </div>
-                    <div className="text-right">
-                        <p className="text-gray-600 text-sm">Câu hỏi</p>
-                        <p className="text-2xl font-bold text-blue-600">
-                            {currentQuestionIndex + 1}/{questions.length}
-                        </p>
-                    </div>
-                </div> */}
+        <div className="min-h-screen bg-gradient-to-r from-blue-200 to-blue-100 py-10 px-4">
+            <main className="flex-1 px-6 flex flex-col items-center min-h-[80vh]">
+                <h2 className="text-2xl font-semibold text-center mb-4">
+                    {topic.title}
+                </h2>
+                <p className="text-gray-600 text-center mb-8">
+                    Câu hỏi {currentQuestionIndex + 1} / {questions.length}
+                </p>
 
                 {/* Câu hỏi */}
-                <QuestionCard
-                    question={currentQuestion}
-                    onAnswer={handleAnswer}
-                    isAnswered={isAnswered}
-                    isCorrect={isCorrect}
-                    selectedAnswer={selectedAnswer}
-                />
+                <div className="mb-8 w-full max-w-2xl">
+                    <QuestionCard
+                        question={currentQuestion}
+                        topic={topic}
+                        onAnswer={handleAnswer}
+                        isAnswered={isAnswered}
+                        isCorrect={isCorrect}
+                        selectedAnswer={selectedAnswer}
+                    />
+                </div>
 
-                {/* Nút hành động */}
-                {isAnswered && (
-                    <div className="mt-8 text-center">
+                {/* Navigation buttons */}
+                <div className="flex justify-center gap-4 mb-6">
+                    <button
+                        onClick={handlePreviousQuestion}
+                        disabled={currentQuestionIndex === 0}
+                        className={`px-6 py-2 rounded ${currentQuestionIndex === 0
+                                ? "bg-gray-300 cursor-not-allowed"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                            }`}
+                    >
+                        ← Câu trước
+                    </button>
+                    <button
+                        onClick={handleNextQuestion}
+                        className={`px-6 py-2 rounded ${currentQuestionIndex === questions.length - 1
+                                ? "bg-green-500 text-white hover:bg-green-600"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                            }`}
+                    >
+                        {currentQuestionIndex === questions.length - 1 ? "Xem kết quả" : "Câu tiếp →"}
+                    </button>
+                </div>
+
+                {/* Question indicators */}
+                <div className="flex justify-center gap-2 mb-8 flex-wrap max-w-2xl">
+                    {questions.map((_, index) => (
                         <button
-                            onClick={handleNextQuestion}
-                            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300"
+                            key={index}
+                            onClick={() => handleGoToQuestion(index)}
+                            className={`w-10 h-10 rounded ${index === currentQuestionIndex
+                                    ? "bg-blue-500 text-white"
+                                    : "bg-gray-200 text-gray-700 hover:bg-blue-300"
+                                }`}
                         >
-                            {currentQuestionIndex < questions.length - 1 ? "Câu tiếp theo" : "Xem kết quả"}
+                            {index + 1}
                         </button>
-                    </div>
-                )}
-            </div>
+                    ))}
+                </div>
+
+                {/* Back button */}
+                <button
+                    onClick={() => navigate("/chonchude")}
+                    className="bg-gray-400 text-white px-6 py-2 rounded hover:bg-gray-600"
+                >
+                    Quay lại danh sách chủ đề
+                </button>
+            </main>
         </div>
     );
 }

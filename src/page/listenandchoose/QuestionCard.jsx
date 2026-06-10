@@ -1,27 +1,46 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Volume2 } from "lucide-react";
 
 export default function QuestionCard({
     question,
+    topic,
     onAnswer,
     isAnswered,
     isCorrect,
     selectedAnswer,
 }) {
-    const audioRef = useRef(null);
     const [imageError, setImageError] = useState({});
+    const [hasPlayedAudio, setHasPlayedAudio] = useState(false);
+
+    const playAudio = useCallback(() => {
+        // Dừng âm thanh hiện tại nếu có
+        window.speechSynthesis.cancel();
+
+        // Tạo utterance mới với từ cần phát
+        const utterance = new SpeechSynthesisUtterance(question.word);
+        utterance.rate = 0.8; // Tốc độ phát chậm một chút
+        utterance.pitch = 1;
+        utterance.lang = "en-US"; // Tiếng Anh
+
+        // Phát âm thanh
+        window.speechSynthesis.speak(utterance);
+    }, [question.word]);
 
     useEffect(() => {
         setImageError({});
+        setHasPlayedAudio(false);
     }, [question]);
 
-    const playAudio = () => {
-        if (audioRef.current) {
-            audioRef.current.play().catch(() => {
-                alert("Đang phát âm thanh: " + question.word);
-            });
+    // Tự động phát âm thanh câu hỏi khi câu hỏi thay đổi
+    useEffect(() => {
+        if (question && !hasPlayedAudio && !isAnswered) {
+            const timer = setTimeout(() => {
+                playAudio();
+                setHasPlayedAudio(true);
+            }, 500);
+            return () => clearTimeout(timer);
         }
-    };
+    }, [question, hasPlayedAudio, isAnswered, playAudio]);
 
     const handleImageError = (optionId) => {
         setImageError(prev => ({ ...prev, [optionId]: true }));
@@ -29,28 +48,17 @@ export default function QuestionCard({
 
     return (
         <div className="bg-gray-100 rounded-3xl shadow-lg p-8 max-w-2xl mx-auto">
-            {/* Tiêu đề */}
-            <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
-                {question.word}
-            </h1>
 
             {/* Speaker Button */}
             <div className="flex justify-center mb-8">
                 <button
                     onClick={playAudio}
-                    disabled={isAnswered}
-                    className="flex items-center gap-3 bg-gray-300 hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed text-gray-800 font-semibold py-3 px-8 rounded-full transition-all duration-300"
+                    className="flex items-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 active:scale-95"
                 >
                     <Volume2 className="w-5 h-5" />
                     <span>Click to listen</span>
                 </button>
             </div>
-
-            {/* Audio element */}
-            <audio
-                ref={audioRef}
-                src={question.audio}
-            />
 
             {/* Hình ảnh lựa chọn - 2 lựa chọn */}
             <div className="grid grid-cols-2 gap-6 mb-8">

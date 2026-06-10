@@ -2,21 +2,21 @@
 export const listenAndChooseTopics = [
     {
         id: 1,
-        title: "Chu de dong vat",
+        title: "Chủ đề động vật",
         image: "https://picsum.photos/seed/test1/400/250",
-        description: "Luyện tập Test 1",
+        description: "Luyện tập về chủ đề động vật",
     },
     {
         id: 2,
-        title: "Chu de dong vat",
+        title: "Chủ đề hoa quả",
         image: "https://picsum.photos/seed/test2/400/250",
-        description: "Luyện tập Test 2",
+        description: "Luyện tập về chủ đề hoa quả",
     },
     {
         id: 3,
-        title: "Chu de dong vat",
+        title: "Chủ đề đồ dùng",
         image: "https://picsum.photos/seed/test3/400/250",
-        description: "Luyện tập Test 3",
+        description: "Luyện tập về chủ đề đồ dùng",
     },
 ];
 
@@ -26,7 +26,8 @@ export const listenAndChooseQuestions = {
             id: 1,
             audio: "/audio/word1.mp3",
             correctAnswer: 1,
-            word: "Tranh 1",
+            word: "banana",
+            topic: "Chu de dong vat",
             options: [
                 {
                     id: 1,
@@ -44,7 +45,7 @@ export const listenAndChooseQuestions = {
             id: 2,
             audio: "/audio/word2.mp3",
             correctAnswer: 2,
-            word: "Tranh 2",
+            word: "Tranh 66",
             options: [
                 {
                     id: 1,

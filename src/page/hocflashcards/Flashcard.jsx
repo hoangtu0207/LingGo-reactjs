@@ -78,7 +78,7 @@ export default function Flashcard() {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-r from-blue-200 to-blue-100 py-10 px-4">
-		<main className="flex-1 px-6 py-10 flex flex-col items-center min-h-[80vh]">
+		<main className="flex-1 px-6  flex flex-col items-center min-h-[80vh]">
 			<h2 className=" text-2xl font-semibold text-center mb-4">
 				{topic.title}
 			</h2>
